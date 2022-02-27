@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">UserInfo</string>
+    <string name="tv_userform">User Form</string>
+    <string name="username_hint">Enter Username</string>
+    <string name="email_hint">Enter Email</string>
+    <string name="phone_hint">Enter Phone</string>
+    <string name="pincode_hint">Enter Pincode</string>
+    <string name="address_hint">Enter Address</string>
+    <string name="button_validate">Validate</string>
 </resources>
