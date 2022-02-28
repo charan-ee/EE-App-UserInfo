@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         val cancelConfirmButtonLayout = binding.buttonLayout
         val cancelButtonView = binding.buttonCancel
-        val confirmButtonView = binding.buttonConfirm
+        val confirmButton = binding.buttonConfirm
 
 
         val editTextUsername = findViewById<EditText>(R.id.editTextViewUserName)
@@ -36,23 +36,20 @@ class MainActivity : AppCompatActivity() {
         val buttonValidate = findViewById<Button>(R.id.buttonValidate)
         val layout = findViewById<ConstraintLayout>(R.id.constraintLayout)
 
-        buttonValidate.setOnClickListener(object: View.OnClickListener {
-            override fun onClick(view: View){
-
-
+        buttonValidate.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
                 val isAllFieldsFilled = validateAllFields(layout)
-                if(isAllFieldsFilled
+                if (isAllFieldsFilled
                     && validatePhoneField(editTextPhone)
                     && validatePincodeField(editTextPincode)
-                    && validateEmailField(editTextEmail)){
-                        buttonValidate.visibility = View.INVISIBLE
-                        cancelConfirmButtonLayout.visibility = View.VISIBLE
+                    && validateEmailField(editTextEmail)
+                ) {
+                    buttonValidate.visibility = View.INVISIBLE
+                    cancelConfirmButtonLayout.visibility = View.VISIBLE
                     disableEditViews()
-
-                }else{
+                } else {
                     startActivity(getIntent())
                 }
-
             }
 
             private fun disableEditViews() {
@@ -69,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun validateEmailField(view: EditText): Boolean {
         val email = view.text.toString()
-        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             return true
         }
         getToastMessage("Email should have @ and .com or co.in")
@@ -90,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun validatePincodeField(view: EditText): Boolean {
         val pincode = view.text.toString()
-        if(pincode.length != 6){
+        if (pincode.length != 6) {
             getToastMessage("Pincode should be only length of 6")
             return false
         }
@@ -99,14 +96,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun validatePhoneField(view: EditText): Boolean {
         val phoneNumber = view.text.toString()
-        if(phoneNumber.length != 10){
+        if (phoneNumber.length != 10) {
             getToastMessage("Phone number should be only length of 10")
             return false
         }
         return true
     }
 
-    private fun getToastMessage(message: String){
+    private fun getToastMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 

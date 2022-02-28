@@ -7,9 +7,9 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/constraintLayout"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         tools:context=".MainActivity">
@@ -32,8 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
             android:hint="@string/username_hint"
-            android:tag="USERNAME"
             android:inputType="text"
+            android:tag="USERNAME"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -68,8 +68,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
             android:hint="@string/pincode_hint"
-            android:tag="PINCODE"
             android:inputType="number"
+            android:tag="PINCODE"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -80,9 +80,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="250dp"
             android:hint="@string/address_hint"
-            android:tag="ADDRESS"
             android:inputType="textMultiLine"
             android:maxLines="8"
+            android:tag="ADDRESS"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
