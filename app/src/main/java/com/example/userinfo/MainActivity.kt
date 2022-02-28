@@ -1,5 +1,6 @@
 package com.example.userinfo
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -26,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         val cancelButtonView = binding.buttonCancel
         val confirmButton = binding.buttonConfirm
 
-
         val editTextUsername = findViewById<EditText>(R.id.editTextViewUserName)
         val editTextEmail = findViewById<EditText>(R.id.editTextViewEmail)
         val editTextPhone = findViewById<EditText>(R.id.editTextViewPhone)
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                     cancelConfirmButtonLayout.visibility = View.VISIBLE
                     disableEditViews()
                 } else {
-                    startActivity(getIntent())
+//                    startActivity(getIntent())
                 }
             }
 
@@ -60,6 +60,21 @@ class MainActivity : AppCompatActivity() {
                         v.setTextColor(Color.BLACK)
                     }
                 }
+            }
+        })
+
+        confirmButton.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(view: View) {
+                val bundle = Bundle()
+                bundle.putString("username", editTextUsername.text.toString())
+                bundle.putString("email", editTextEmail.text.toString())
+                bundle.putString("phone", editTextPhone.text.toString())
+                bundle.putString("pincode", editTextPincode.text.toString())
+                bundle.putString("address", editTextAddress.text.toString())
+
+                val intent = Intent(this@MainActivity , InfoDisplayActivity::class.java)
+                intent.putExtras(bundle)
+                startActivity(intent)
             }
         })
     }
