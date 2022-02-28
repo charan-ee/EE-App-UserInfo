@@ -7,4 +7,6 @@
     <string name="pincode_hint">Enter Pincode</string>
     <string name="address_hint">Enter Address</string>
     <string name="button_validate">Validate</string>
+    <string name="button_cancel">cancel</string>
+    <string name="button_confirm">confirm</string>
 </resources>
