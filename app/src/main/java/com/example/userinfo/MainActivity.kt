@@ -3,6 +3,7 @@ package com.example.userinfo
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.util.Patterns
 import android.view.View
@@ -18,23 +19,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val textUsername = binding.editTextViewUserName.text
+        val editTextUsername = binding.editTextViewUserName
+        val editTextEmail = binding.editTextViewEmail
+        val editTextPhone = binding.editTextViewPhone
+        val editTextPincode = binding.editTextViewPincode
+        val editTextAddress = binding.editTextViewAddress
 
         val cancelConfirmButtonLayout = binding.buttonLayout
-        val cancelButtonView = binding.buttonCancel
+        val cancelButton = binding.buttonCancel
         val confirmButton = binding.buttonConfirm
-
-        val editTextUsername = findViewById<EditText>(R.id.editTextViewUserName)
-        val editTextEmail = findViewById<EditText>(R.id.editTextViewEmail)
-        val editTextPhone = findViewById<EditText>(R.id.editTextViewPhone)
-        val editTextPincode = findViewById<EditText>(R.id.editTextViewPincode)
-        val editTextAddress = findViewById<EditText>(R.id.editTextViewAddress)
-
-        val buttonValidate = findViewById<Button>(R.id.buttonValidate)
-        val layout = findViewById<ConstraintLayout>(R.id.constraintLayout)
+        val buttonValidate = binding.buttonValidate
+        val layout = binding.constraintLayout
 
         buttonValidate.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                     cancelConfirmButtonLayout.visibility = View.VISIBLE
                     disableEditViews()
                 } else {
-//                    startActivity(getIntent())
+                    startActivity(getIntent())
                 }
             }
 
@@ -63,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        confirmButton.setOnClickListener(object: View.OnClickListener {
+        confirmButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 val bundle = Bundle()
                 bundle.putString("username", editTextUsername.text.toString())
@@ -72,9 +71,26 @@ class MainActivity : AppCompatActivity() {
                 bundle.putString("pincode", editTextPincode.text.toString())
                 bundle.putString("address", editTextAddress.text.toString())
 
-                val intent = Intent(this@MainActivity , InfoDisplayActivity::class.java)
+                val intent = Intent(this@MainActivity, InfoDisplayActivity::class.java)
                 intent.putExtras(bundle)
                 startActivity(intent)
+            }
+        })
+
+        cancelButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                buttonValidate.visibility = View.VISIBLE
+                cancelConfirmButtonLayout.visibility = View.INVISIBLE
+                enableEditViews()
+            }
+
+            private fun enableEditViews() {
+                for (i in 0 until layout.childCount) {
+                    val v = layout.getChildAt(i)
+                    if (v is EditText) {
+                        v.isEnabled = true
+                    }
+                }
             }
         })
     }
@@ -109,7 +125,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun validatePhoneField(view: EditText): Boolean {
+    internal fun validatePhoneField(view: EditText): Boolean {
         val phoneNumber = view.text.toString()
         if (phoneNumber.length != 10) {
             getToastMessage("Phone number should be only length of 10")
@@ -122,5 +138,9 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+
+    }
 
 }

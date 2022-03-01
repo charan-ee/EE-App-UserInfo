@@ -10,16 +10,39 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
         tools:context=".MainActivity">
+
+        <FrameLayout
+            android:id="@+id/frameLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="394dp"
+            android:background="@drawable/blue_bg"
+            app:layout_constraintBottom_toTopOf="@+id/buttonValidate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="32dp"
+                android:visibility="gone"
+                android:layout_gravity="center" />
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="160dp"
+            android:fontFamily="sans-serif-medium"
             android:text="@string/tv_userform"
+            android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -31,6 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginStart="38dp"
             android:hint="@string/username_hint"
             android:inputType="text"
             android:tag="USERNAME"
@@ -42,7 +67,9 @@
             android:id="@+id/editTextViewEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="88dp"
+            android:layout_marginTop="85dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginStart="38dp"
             android:hint="@string/email_hint"
             android:inputType="textEmailAddress"
             android:tag="EMAIL"
@@ -55,6 +82,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginStart="38dp"
             android:hint="@string/phone_hint"
             android:inputType="phone"
             android:tag="PHONE"
@@ -67,6 +96,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginStart="38dp"
             android:hint="@string/pincode_hint"
             android:inputType="number"
             android:tag="PINCODE"
@@ -79,6 +110,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="250dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginStart="38dp"
             android:hint="@string/address_hint"
             android:inputType="textMultiLine"
             android:maxLines="8"
@@ -91,11 +124,17 @@
             android:id="@+id/buttonValidate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="40dp"
             android:text="@string/button_validate"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout3" />
 
         <LinearLayout
             android:id="@+id/buttonLayout"

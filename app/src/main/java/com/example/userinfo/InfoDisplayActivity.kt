@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.TextView
 
 class InfoDisplayActivity : AppCompatActivity() {
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +22,7 @@ class InfoDisplayActivity : AppCompatActivity() {
         val pincode = infoBundle?.getString("pincode")
         val address = infoBundle?.getString("address")
 
-        textViewUserInfo.setText("Hi $username, How are you? Are you staying at $address-$pincode \n" +
-                ". I am not able to contact you on $phone. Can I email you the details at $email")
+        textViewUserInfo.setText("Hi $username, How are you? Are you staying at $address-$pincode. " +
+                "I am not able to contact you on $phone. Can I email you the details at $email")
     }
 }
