@@ -11,10 +11,9 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.android.userinfo.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class UserInputActivity : AppCompatActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 val isAllFieldsFilled = validateAllFields(layout)
                 if (isAllFieldsFilled
                     && validatePhoneField(editTextPhone)
-                    && validatePincodeField(editTextPincode,this@MainActivity)
+                    && validatePincodeField(editTextPincode,this@UserInputActivity)
                     && validateEmailField(editTextEmail)
                 ) {
                     buttonValidate.visibility = View.INVISIBLE
@@ -71,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                 bundle.putString(PINCODE, editTextPincode.text.toString())
                 bundle.putString(ADDRESS, editTextAddress.text.toString())
 
-                val intent = Intent(this@MainActivity, InfoDisplayActivity::class.java)
+                val intent = Intent(this@UserInputActivity, InfoDisplayActivity::class.java)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
@@ -134,7 +133,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun getToastMessage(message: String) {
+    public fun getToastMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 

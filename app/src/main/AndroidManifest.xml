@@ -14,7 +14,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
         <activity
-            android:name="com.android.userinfo.MainActivity"
+            android:name="com.android.userinfo.UserInputActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/Theme.UserInfo.NoActionBar"
             android:exported="true">
