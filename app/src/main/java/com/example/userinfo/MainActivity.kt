@@ -1,5 +1,6 @@
 package com.example.userinfo
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import com.example.userinfo.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                 val isAllFieldsFilled = validateAllFields(layout)
                 if (isAllFieldsFilled
                     && validatePhoneField(editTextPhone)
-                    && validatePincodeField(editTextPincode)
+                    && validatePincodeField(editTextPincode,this@MainActivity)
                     && validateEmailField(editTextEmail)
                 ) {
                     buttonValidate.visibility = View.INVISIBLE
@@ -65,11 +67,11 @@ class MainActivity : AppCompatActivity() {
         confirmButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 val bundle = Bundle()
-                bundle.putString("username", editTextUsername.text.toString())
-                bundle.putString("email", editTextEmail.text.toString())
-                bundle.putString("phone", editTextPhone.text.toString())
-                bundle.putString("pincode", editTextPincode.text.toString())
-                bundle.putString("address", editTextAddress.text.toString())
+                bundle.putString(USERNAME, editTextUsername.text.toString())
+                bundle.putString(EMAIL, editTextEmail.text.toString())
+                bundle.putString(PHONE, editTextPhone.text.toString())
+                bundle.putString(PINCODE, editTextPincode.text.toString())
+                bundle.putString(ADDRESS, editTextAddress.text.toString())
 
                 val intent = Intent(this@MainActivity, InfoDisplayActivity::class.java)
                 intent.putExtras(bundle)
@@ -100,7 +102,7 @@ class MainActivity : AppCompatActivity() {
         if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             return true
         }
-        getToastMessage("Email should have @ and .com or co.in")
+        getToastMessage(TOAST_EMAIL)
         return false
     }
 
@@ -116,10 +118,10 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    private fun validatePincodeField(view: EditText): Boolean {
+    private fun validatePincodeField(view: EditText, context: Context): Boolean {
         val pincode = view.text.toString()
         if (pincode.length != 6) {
-            getToastMessage("Pincode should be only length of 6")
+            getToastMessage(TOAST_PINCODE)
             return false
         }
         return true
@@ -128,7 +130,7 @@ class MainActivity : AppCompatActivity() {
     internal fun validatePhoneField(view: EditText): Boolean {
         val phoneNumber = view.text.toString()
         if (phoneNumber.length != 10) {
-            getToastMessage("Phone number should be only length of 10")
+            getToastMessage(TOAST_PHONE)
             return false
         }
         return true
