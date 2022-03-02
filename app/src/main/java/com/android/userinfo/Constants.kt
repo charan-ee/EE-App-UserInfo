@@ -1,4 +1,4 @@
-package com.example.userinfo
+package com.android.userinfo
 
 const val USERNAME = "username"
 const val EMAIL = "email"

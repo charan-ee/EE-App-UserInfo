@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.userinfo">
+    package="com.android.userinfo">
 
     <application
         android:allowBackup="true"
@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UserInfo">
         <activity
-            android:name=".InfoDisplayActivity"
+            android:name="com.android.userinfo.InfoDisplayActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.android.userinfo.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/Theme.UserInfo.NoActionBar"
             android:exported="true">

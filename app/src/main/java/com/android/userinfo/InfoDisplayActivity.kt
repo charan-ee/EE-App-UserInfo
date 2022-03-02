@@ -1,4 +1,4 @@
-package com.example.userinfo
+package com.android.userinfo
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
