@@ -70,8 +70,9 @@ class UserInputActivity : AppCompatActivity() {
                 bundle.putString(PINCODE, editTextPincode.text.toString())
                 bundle.putString(ADDRESS, editTextAddress.text.toString())
 
-                val intent = Intent(this@UserInputActivity, InfoDisplayActivity::class.java)
-                intent.putExtras(bundle)
+                val intent = Intent(this@UserInputActivity, InfoDisplayActivity::class.java).apply {
+                    putExtras(bundle)
+                }
                 startActivity(intent)
             }
         })
