@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InfoDisplayActivity"
-    android:layout_marginRight="@dimen/infodisplayCL_marginRight"
-    android:layout_marginLeft="@dimen/infodisplayCL_marginLeft">
+    android:layout_marginEnd="@dimen/infodisplayCL_marginRight"
+    android:layout_marginStart="@dimen/infodisplayCL_marginLeft">
 
     <TextView
         android:id="@+id/textViewUserInfo"

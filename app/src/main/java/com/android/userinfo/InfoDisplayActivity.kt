@@ -3,7 +3,6 @@ package com.android.userinfo
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import com.android.userinfo.databinding.ActivityInfoDisplayBinding
 import java.lang.String.format
 
@@ -27,6 +26,6 @@ class InfoDisplayActivity : AppCompatActivity() {
 
         val userInfoText = format(getString(R.string.userinfo_text), username, address, pincode, phone, email)
 
-        binding.textViewUserInfo.setText(userInfoText)
+        binding.textViewUserInfo.text = userInfoText
     }
 }

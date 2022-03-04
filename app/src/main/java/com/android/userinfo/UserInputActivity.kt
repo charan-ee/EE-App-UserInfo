@@ -1,10 +1,8 @@
 package com.android.userinfo
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Patterns
 import android.view.View
 import android.widget.*
@@ -39,14 +37,14 @@ class UserInputActivity : AppCompatActivity() {
                 val isAllFieldsFilled = validateAllFields(layout)
                 if (isAllFieldsFilled
                     && validatePhoneField(editTextPhone)
-                    && validatePincodeField(editTextPincode,this@UserInputActivity)
+                    && validatePincodeField(editTextPincode)
                     && validateEmailField(editTextEmail)
                 ) {
                     buttonValidate.visibility = View.INVISIBLE
                     cancelConfirmButtonLayout.visibility = View.VISIBLE
                     disableEditViews()
                 } else {
-                    startActivity(getIntent())
+                    startActivity(intent)
                 }
             }
 
@@ -61,21 +59,19 @@ class UserInputActivity : AppCompatActivity() {
             }
         })
 
-        confirmButton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View) {
-                val bundle = Bundle()
-                bundle.putString(USERNAME, editTextUsername.text.toString())
-                bundle.putString(EMAIL, editTextEmail.text.toString())
-                bundle.putString(PHONE, editTextPhone.text.toString())
-                bundle.putString(PINCODE, editTextPincode.text.toString())
-                bundle.putString(ADDRESS, editTextAddress.text.toString())
+        confirmButton.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString(USERNAME, editTextUsername.text.toString())
+            bundle.putString(EMAIL, editTextEmail.text.toString())
+            bundle.putString(PHONE, editTextPhone.text.toString())
+            bundle.putString(PINCODE, editTextPincode.text.toString())
+            bundle.putString(ADDRESS, editTextAddress.text.toString())
 
-                val intent = Intent(this@UserInputActivity, InfoDisplayActivity::class.java).apply {
-                    putExtras(bundle)
-                }
-                startActivity(intent)
+            val intent = Intent(this@UserInputActivity, InfoDisplayActivity::class.java).apply {
+                putExtras(bundle)
             }
-        })
+            startActivity(intent)
+        }
 
         cancelButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
@@ -116,7 +112,7 @@ class UserInputActivity : AppCompatActivity() {
         return true
     }
 
-    private fun validatePincodeField(view: EditText, context: Context): Boolean {
+    private fun validatePincodeField(view: EditText): Boolean {
         val pincode = view.text.toString()
         if (pincode.length != 6) {
             getToastMessage(getString(R.string.toast_pincode))
@@ -134,13 +130,7 @@ class UserInputActivity : AppCompatActivity() {
         return true
     }
 
-    internal fun getToastMessage(message: String) {
+    private fun getToastMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-
-    }
-
 }

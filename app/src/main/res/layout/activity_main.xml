@@ -115,7 +115,7 @@
             android:hint="@string/address_hint"
             android:inputType="textMultiLine"
             android:maxLines="8"
-            android:tag="@string/addresET_tag"
+            android:tag="@string/addressET_tag"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />

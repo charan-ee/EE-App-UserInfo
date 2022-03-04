@@ -74,14 +74,4 @@ class UserInputActivityInstrumentedTest {
         onView(withId(R.id.editTextViewAddress))
             .check(matches(isEnabled()))
     }
-
-//    @Test
-//    fun shouldDisplayToastMessageForInvalidInputs() {
-//
-//    }
-//
-//    @Test
-//    fun shouldPassIntentOnClickofConfirmButton() {
-//
-//    }
 }
