@@ -5,19 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InfoDisplayActivity"
-    android:layout_marginRight="20dp"
-    android:layout_marginLeft="20dp">
+    android:layout_marginRight="@dimen/infodisplayCL_marginRight"
+    android:layout_marginLeft="@dimen/infodisplayCL_marginLeft">
 
     <TextView
         android:id="@+id/textViewUserInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="@dimen/userInfoTV_textSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
-
         app:layout_constraintTop_toTopOf="parent" />
 
 

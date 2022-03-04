@@ -100,7 +100,7 @@ class UserInputActivity : AppCompatActivity() {
         if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             return true
         }
-        getToastMessage(TOAST_EMAIL)
+        getToastMessage(getString(R.string.toast_email))
         return false
     }
 
@@ -109,7 +109,7 @@ class UserInputActivity : AppCompatActivity() {
             val v = layout.getChildAt(i)
             if (v is EditText && v.text.trim().isEmpty()) {
                 val name = v.getTag().toString()
-                getToastMessage("$name is mandatory")
+                getToastMessage(name + getString(R.string.toast_mandatory))
                 return false
             }
         }
@@ -119,7 +119,7 @@ class UserInputActivity : AppCompatActivity() {
     private fun validatePincodeField(view: EditText, context: Context): Boolean {
         val pincode = view.text.toString()
         if (pincode.length != 6) {
-            getToastMessage(TOAST_PINCODE)
+            getToastMessage(getString(R.string.toast_pincode))
             return false
         }
         return true
@@ -128,13 +128,13 @@ class UserInputActivity : AppCompatActivity() {
     internal fun validatePhoneField(view: EditText): Boolean {
         val phoneNumber = view.text.toString()
         if (phoneNumber.length != 10) {
-            getToastMessage(TOAST_PHONE)
+            getToastMessage(getString(R.string.toast_phone))
             return false
         }
         return true
     }
 
-    public fun getToastMessage(message: String) {
+    internal fun getToastMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="frameL_height">150dp</dimen>
+    <dimen name="frameL_marginStart">25dp</dimen>
+    <dimen name="frameL_marginEnd">25dp</dimen>
+    <dimen name="frameL_marginBottom">394dp</dimen>
+    <dimen name="bluebg_marginTop">25dp</dimen>
+    <dimen name="bluebg_marginBottom">32dp</dimen>
+    <dimen name="userformTV_marginTop">160dp</dimen>
+    <dimen name="userformTV_textSize">40sp</dimen>
+    <dimen name="usernameET_marginTop">21dp</dimen>
+    <dimen name="usernameET_marginEnd">38dp</dimen>
+    <dimen name="usernameET_marginStart">38dp</dimen>
+    <dimen name="emailET_marginTop">85dp</dimen>
+    <dimen name="emailET_marginEnd">38dp</dimen>
+    <dimen name="emailET_marginStart">38dp</dimen>
+    <dimen name="phoneET_marginTop">150dp</dimen>
+    <dimen name="phoneET_marginEnd">38dp</dimen>
+    <dimen name="phoneET_marginStart">38dp</dimen>
+    <dimen name="pincodeET_marginTop">200dp</dimen>
+    <dimen name="addressET_marginTop">250dp</dimen>
+    <dimen name="addressET_marginEnd">38dp</dimen>
+    <dimen name="addressET_marginStart">38dp</dimen>
+    <dimen name="validateButton_padStart">30dp</dimen>
+    <dimen name="validateButton_padEnd">30dp</dimen>
+    <dimen name="validateButton_marginEnd">100dp</dimen>
+    <dimen name="validateButton_marginStart">100dp</dimen>
+    <dimen name="validateButton_marginTop">40dp</dimen>
+    <dimen name="validateButton_textSize">18sp</dimen>
+    <dimen name="cancelButton_margin">5dp</dimen>
+    <dimen name="confirmButton_margin">5dp</dimen>
+    <dimen name="infodisplayCL_marginRight">20dp</dimen>
+    <dimen name="infodisplayCL_marginLeft">20dp</dimen>
+    <dimen name="userInfoTV_textSize">20sp</dimen>
+</resources>
