@@ -1,4 +1,4 @@
-package com.example.userinfo
+package com.android.userinfo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
