@@ -1,4 +1,4 @@
-package com.example.userinfo
+package com.android.userinfo
 
 import org.junit.Test
 
