@@ -11,10 +11,13 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.android.userinfo.databinding.ActivityMainBinding
 
 
+
 class UserInputActivity : AppCompatActivity() {
+    private lateinit var validator: Validator
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        validator = Validator()
 
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -34,11 +37,12 @@ class UserInputActivity : AppCompatActivity() {
 
         buttonValidate.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
-                val isAllFieldsFilled = validateAllFields(layout)
+                
+                val isAllFieldsFilled = validator.validateAllFields(layout,this@UserInputActivity)
                 if (isAllFieldsFilled
-                    && validatePhoneField(editTextPhone)
-                    && validatePincodeField(editTextPincode)
-                    && validateEmailField(editTextEmail)
+                    && validator.validatePhoneField(editTextPhone.text.toString(), this@UserInputActivity)
+                    && validator.validatePincodeField(editTextPincode.text.toString(),this@UserInputActivity)
+                    && validator.validateEmailField(editTextEmail.text.toString(),this@UserInputActivity)
                 ) {
                     buttonValidate.visibility = View.INVISIBLE
                     cancelConfirmButtonLayout.visibility = View.VISIBLE
@@ -91,46 +95,6 @@ class UserInputActivity : AppCompatActivity() {
         })
     }
 
-    private fun validateEmailField(view: EditText): Boolean {
-        val email = view.text.toString()
-        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            return true
-        }
-        getToastMessage(getString(R.string.toast_email))
-        return false
-    }
 
-    private fun validateAllFields(layout: ConstraintLayout): Boolean {
-        for (i in 0 until layout.childCount) {
-            val v = layout.getChildAt(i)
-            if (v is EditText && v.text.trim().isEmpty()) {
-                val name = v.getTag().toString()
-                getToastMessage(name + getString(R.string.toast_mandatory))
-                return false
-            }
-        }
-        return true
-    }
 
-    private fun validatePincodeField(view: EditText): Boolean {
-        val pincode = view.text.toString()
-        if (pincode.length != 6) {
-            getToastMessage(getString(R.string.toast_pincode))
-            return false
-        }
-        return true
-    }
-
-    internal fun validatePhoneField(view: EditText): Boolean {
-        val phoneNumber = view.text.toString()
-        if (phoneNumber.length != 10) {
-            getToastMessage(getString(R.string.toast_phone))
-            return false
-        }
-        return true
-    }
-
-    private fun getToastMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
 }
