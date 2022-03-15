@@ -1,6 +1,25 @@
-<resources>
-    <string name="app_name">UserInfo</string>
-    <string name="button_validate">validate</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+<string name="app_name">UserInfo</string>
+<string name="tv_userform">User Form</string>
+<string name="username_hint">Enter Username</string>
+<string name="email_hint">Enter Email</string>
+<string name="phone_hint">Enter Phone</string>
+<string name="pincode_hint">Enter Pincode</string>
+<string name="address_hint">Enter Address</string>
+<string name="button_validate">Validate</string>
+<string name="button_cancel" tools:ignore="ButtonCase">cancel</string>
+<string name="button_confirm">confirm</string>
+
+<string name="toast_email">Email should have @ and .com or co.in</string>
+<string name="toast_phone">Phone number should be only length of 10</string>
+<string name="toast_pincode">Pincode should be only length of 6</string>
+<string name="toast_mandatory"> is mandatory. It can\'t be blank</string>
+
+<string name="userinfo_text">Hi %1$s, How are you? Are you staying at %2$s-%3$s. I am not able to contact you on %4$s. Can I email you the details at %5$s</string>
+<string name="userformTV_fontFamily">sans-serif-medium</string>
+<string name="usernameET_tag">USERNAME</string>
+<string name="emailET_tag">EMAIL</string>
+<string name="phoneET_tag">PHONE</string>
+<string name="pincodeET_tag">PINCODE</string>
+<string name="addressET_tag">ADDRESS</string>
 </resources>
