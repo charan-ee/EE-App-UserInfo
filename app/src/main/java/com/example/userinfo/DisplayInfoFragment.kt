@@ -11,21 +11,23 @@ import com.example.userinfo.model.UserViewModel
 
 class DisplayInfoFragment : Fragment() {
 
-    private var displayInfoBinding: FragmentDisplayInfoBinding? = null
+    private var _displayInfoBinding: FragmentDisplayInfoBinding? = null
+    private val displayInfoBinding get() = _displayInfoBinding!!
     private lateinit var userViewModel: UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        displayInfoBinding = FragmentDisplayInfoBinding.inflate(inflater, container, true)
-        return displayInfoBinding!!.root
+    ): View {
+        _displayInfoBinding = FragmentDisplayInfoBinding.inflate(inflater, container, false)
+        userViewModel = activity?.let { ViewModelProvider(it)[UserViewModel::class.java] }
+            ?: throw RuntimeException("Not a Activity")
+        return displayInfoBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        userViewModel = activity?.let { ViewModelProvider(it)[UserViewModel::class.java] }
-            ?: throw RuntimeException("Not a Activity")
+        displayInfoBinding.detailsTV.text = userViewModel.username.value
     }
 }

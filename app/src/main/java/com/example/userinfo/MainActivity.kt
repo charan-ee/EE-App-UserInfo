@@ -6,14 +6,23 @@ import com.example.userinfo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainActivityMainBinding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        mainActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(mainActivityMainBinding.root)
 
         val userInputFragment = UserInputFragment()
 
-        val userInputTransaction = supportFragmentManager.beginTransaction()
-        userInputTransaction.replace(R.id.main_container, userInputFragment)
-        userInputTransaction.commit()
+        if(savedInstanceState == null) {
+            loadFragment(userInputFragment)
+        }
+    }
+
+    private fun loadFragment(userInputFragment: UserInputFragment) {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.main_container, userInputFragment)
+            commit()
+        }
     }
 }
