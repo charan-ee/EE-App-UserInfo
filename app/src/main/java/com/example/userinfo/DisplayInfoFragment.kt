@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.userinfo.databinding.FragmentDisplayInfoBinding
 import com.example.userinfo.model.UserViewModel
+import java.lang.String.format
 
 class DisplayInfoFragment : Fragment() {
 
@@ -28,6 +29,14 @@ class DisplayInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        displayInfoBinding.detailsTV.text = userViewModel.username.value
+        val username = userViewModel.username.value
+        val email = userViewModel.email.value
+        val address = userViewModel.address.value
+        val phone = userViewModel.phone.value
+        val pincode = userViewModel.pincode.value
+
+        val userInfoText = format(getString(R.string.userinfo_text), username, address, pincode, phone, email)
+
+        displayInfoBinding.detailsTV.text = userInfoText
     }
 }
